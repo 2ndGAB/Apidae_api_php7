@@ -1,0 +1,21 @@
+{
+    "name": "sitra-tourisme/sitra-api-php",
+    "description": "Apidae API official PHP Client (formerly known as Sitra)",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "JoliCode",
+            "email": "coucou@jolicode.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle-services": "0.5.*",
+        "mmoreram/extractor": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sitra\\ApiClient\\": "src/Sitra/ApiClient",
+            "Sitra\\Tests\\": "tests/"
+        }
+    }
+}
