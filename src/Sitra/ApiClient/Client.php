@@ -128,7 +128,7 @@ class Client extends GuzzleClient
                 'getResponse' => [
                     'type' => 'object',
                     'additionalProperties' => [
-                        'location' => 'json',
+                        'location' => 'body',
                     ],
                 ],
             ],
