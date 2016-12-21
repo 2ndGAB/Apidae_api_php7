@@ -104,10 +104,8 @@ class Client extends GuzzleClient
                 'timeout'           => $this->config['timeout'],
                 'connect_timeout'   => $this->config['connectTimeout'],
                 'proxy'             => $this->config['proxy'],
-            ]),
-            'defaults' => [
                 'verify'            => $this->config['verify']
-            ]
+            ]),
         ]);
 
         $operations = array_merge(
