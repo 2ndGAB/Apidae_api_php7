@@ -7,7 +7,6 @@ use GuzzleHttp\Command\Event\InitEvent;
 use GuzzleHttp\Command\Event\PreparedEvent;
 use GuzzleHttp\Command\Guzzle\DescriptionInterface;
 use GuzzleHttp\Event\SubscriberInterface;
-use GuzzleHttp\Utils;
 use Sitra\ApiClient\Exception\MissingTokenException;
 
 class AuthenticationSubscriber implements SubscriberInterface
@@ -65,7 +64,7 @@ class AuthenticationSubscriber implements SubscriberInterface
             'getReferenceInternalCriteria',
             'getReferenceSelection',
         ])) {
-            $data = is_array($command['query']) ? $command['query'] : Utils::jsonDecode($command['query'], true);
+            $data = is_array($command['query']) ? $command['query'] : \GuzzleHttp\json_decode($command['query'], true);
 
             if (!isset($data['apiKey']) && !isset($data['projetId'])) {
                 $data['apiKey'] = $this->config['apiKey'];

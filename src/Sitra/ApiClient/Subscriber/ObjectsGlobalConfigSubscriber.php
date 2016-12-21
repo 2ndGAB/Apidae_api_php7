@@ -5,7 +5,6 @@ namespace Sitra\ApiClient\Subscriber;
 use GuzzleHttp\Command\Event\InitEvent;
 use GuzzleHttp\Command\Guzzle\DescriptionInterface;
 use GuzzleHttp\Event\SubscriberInterface;
-use GuzzleHttp\Utils;
 
 class ObjectsGlobalConfigSubscriber implements SubscriberInterface
 {
@@ -44,7 +43,7 @@ class ObjectsGlobalConfigSubscriber implements SubscriberInterface
             'searchDetailedAgendaIdentifier',
             'searchDetailedAgenda',
         ])) {
-            $data = is_array($command['query']) ? $command['query'] : Utils::jsonDecode($command['query'], true);
+            $data = is_array($command['query']) ? $command['query'] : \GuzzleHttp\json_decode($command['query'], true);
 
             if (!empty($this->config['responseFields']) && !isset($data['responseFields'])) {
                 $data['responseFields'] = $this->config['responseFields'];
