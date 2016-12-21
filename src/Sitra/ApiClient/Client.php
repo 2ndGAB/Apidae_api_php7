@@ -9,7 +9,7 @@ use GuzzleHttp\Command\Exception\CommandServerException;
 use GuzzleHttp\Command\Guzzle\Description;
 use GuzzleHttp\Command\Guzzle\GuzzleClient;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Url;
+use GuzzleHttp\Psr7\Uri;
 use Mmoreram\Extractor\Extractor;
 use Mmoreram\Extractor\Filesystem\SpecificDirectory;
 use Sitra\ApiClient\Description\Agenda;
@@ -227,11 +227,13 @@ class Client extends GuzzleClient
             'scope'         => AuthenticationSubscriber::SSO_SCOPE,
         );
 
-        $url = Url::fromString($this->config['ssoBaseUrl']);
-        $url->setPath('/oauth/authorize');
-        $url->setQuery($params);
+        $query = http_build_query($params);
 
-        return (string) $url;
+        $uri = new Uri($this->config['ssoBaseUrl']);
+        $uri = $uri->withPath('/oauth/authorize');
+        $uri = $uri->withQuery($query);
+
+        return (string) $uri;
     }
 
     public function setAccessToken($scope, $token)
