@@ -1,0 +1,39 @@
+{
+    "name": "Sitra API",
+    "baseUrl": "http://api.sitra-tourisme.com",
+    "operations": {
+        "Testing": {
+            "httpMethod": "POST",
+            "uri": "/Testing",
+            "responseClass": "TestingResponse",
+            "parameters": {
+                "foo": {
+                    "type": "string",
+                    "required": true,
+                    "description": "Provides the foo endpoint",
+                    "location": "json"
+                },
+                "bar": {
+                    "type": "string",
+                    "required": false,
+                    "description": "Provides the bar endpoint",
+                    "location": "json"
+                },
+                "baz": {
+                    "type": "string",
+                    "required": false,
+                    "description": "Provides the baz endpoint",
+                    "location": "json"
+                }
+            }
+        }
+    },
+    "models": {
+        "TestingResponse": {
+            "type": "object",
+            "additionalProperties": {
+                "location": "json"
+            }
+        }
+    }
+}

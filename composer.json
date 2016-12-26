@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle-services": "~1.0",
+        "guzzlehttp/guzzle-services": "dev-develop",
         "mmoreram/extractor": "~1.1"
     },
     "require-dev": {

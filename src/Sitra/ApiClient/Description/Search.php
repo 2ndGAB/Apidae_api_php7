@@ -38,7 +38,12 @@ class Search
         ],
     );
 
-    public static function encodeSearchQuery($query)
+
+    /**
+     * @param $query
+     * @return string
+     */
+    public static function encodeSearchQuery($query) : string
     {
         if (is_array($query)) {
             return json_encode($query);
