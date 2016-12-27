@@ -38,7 +38,6 @@ class Search
         ],
     );
 
-
     /**
      * @param $query
      * @return string

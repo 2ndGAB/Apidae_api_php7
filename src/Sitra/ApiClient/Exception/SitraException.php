@@ -3,7 +3,6 @@
 namespace Sitra\ApiClient\Exception;
 
 use Exception;
-use GuzzleHttp\Command\Command;
 use GuzzleHttp\Command\Exception\CommandException;
 use GuzzleHttp\Exception\GuzzleException;
 

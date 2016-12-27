@@ -26,8 +26,8 @@ use Sitra\ApiClient\Description\User;
 use Sitra\ApiClient\Exception\InvalidExportDirectoryException;
 use Sitra\ApiClient\Exception\InvalidMetadataFormatException;
 use Sitra\ApiClient\Exception\SitraException;
-use Sitra\ApiClient\Middleware\ObjectsGlobalConfigHandler;
 use Sitra\ApiClient\Middleware\AuthenticationHandler;
+use Sitra\ApiClient\Middleware\ObjectsGlobalConfigHandler;
 use Symfony\Component\Finder\Finder;
 
 /**
@@ -95,7 +95,6 @@ class SitraServiceClient extends GuzzleClient
         // Access tokens by scope
         'accessTokens'      => [],
     ];
-
 
     /**
      * @param array $config
@@ -229,7 +228,6 @@ class SitraServiceClient extends GuzzleClient
         return true;
     }
 
-
     /**
      * @return string
      */
@@ -251,7 +249,6 @@ class SitraServiceClient extends GuzzleClient
         return (string) $uri;
     }
 
-
     /**
      * @param $scope
      * @param $token
@@ -260,7 +257,6 @@ class SitraServiceClient extends GuzzleClient
     {
         $this->config['accessTokens'][$scope] = $token;
     }
-
 
     /**
      * Execute a single command.
@@ -307,8 +303,7 @@ class SitraServiceClient extends GuzzleClient
 
         throw $e;
     }
-
-
+    
     /**
      * @return SpecificDirectory
      */

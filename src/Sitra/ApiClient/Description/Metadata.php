@@ -101,7 +101,6 @@ class Metadata
         ],
     );
 
-
     /**
      * @param $metadata
      * @return string

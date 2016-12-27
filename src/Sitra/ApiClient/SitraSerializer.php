@@ -37,7 +37,6 @@ class SitraSerializer
     /** @var array */
     private $config = [];
 
-
     /**
      * @param DescriptionInterface $description
      * @param RequestLocationInterface[] $requestLocations Extra request locations
@@ -67,7 +66,6 @@ class SitraSerializer
         $this->client = $client;
         $this->config = $config;
     }
-
 
     /**
      * @param CommandInterface $command
@@ -196,7 +194,6 @@ class SitraSerializer
             Uri::resolve($this->description->getBaseUri(), $uri)
         );
     }
-
 
     /**
      * @param string $scope

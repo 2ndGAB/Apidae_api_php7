@@ -25,7 +25,6 @@ class ObjectsGlobalConfigHandler
         $this->config       = $config;
     }
 
-
     /**
      * @param callable $handler
      * @return \Closure

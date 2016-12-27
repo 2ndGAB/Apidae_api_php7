@@ -2,10 +2,8 @@
 
 namespace Sitra\ApiClient\Middleware;
 
-use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Command\CommandInterface;
 use GuzzleHttp\Command\Guzzle\DescriptionInterface;
-use Sitra\ApiClient\Exception\MissingTokenException;
 
 /**
  * Class AuthenticationHandler
@@ -26,7 +24,6 @@ class AuthenticationHandler
         $this->description  = $description;
         $this->config       = $config;
     }
-
 
     /**
      * @param callable $handler
