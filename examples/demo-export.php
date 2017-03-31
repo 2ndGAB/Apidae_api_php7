@@ -4,7 +4,7 @@
 include __DIR__."/../vendor/autoload.php";
 
 // Create the client
-$client = new \Sitra\ApiClient\SitraServiceClient([
+$client = new \Sitra\ApiClient\Client([
     'apiKey'        => 'XXX',
     'projectId'     => 000,
     'baseUrl'       => 'http://api.sitra-tourisme.com/',
@@ -20,26 +20,26 @@ try {
         "statut" => "SUCCESS",
         "reinitialisation" => "false",
         "projetId" => "672",
-        "urlConfirmation" => "http://api.sitra-tourisme.com/api/v002/export/confirmation?hash=1292_20161226-0012_wvl2gA",
+        "urlConfirmation" => "http://api.sitra-tourisme.com/api/v002/export/confirmation?hash=672_20150106-1344_V4BjvT",
         "ponctuel" => "true",
-        "urlRecuperation" => 'http://export.sitra-tourisme.com/exports/1292_20161226-0012_wvl2gA.zip',
+        "urlRecuperation" => "http://export.sitra-tourisme.com/exports/672_20150106-1344_V4BjvT.zip",
     );
 
     $exportFiles = $client->getExportFiles(['url' => $exportNotification['urlRecuperation']]);
-    foreach ($exportFiles->name('objets_lies_modifies-*') as $file) {
+    foreach ($exportFiles->name('objets_lies_modifies-14*') as $file) {
         var_dump($file->getRealpath());
 
         // If you use XML (Apidae settings)
         //$xml = simplexml_load_string($file->getContents());
         //print_r($xml);
 
-         //If you use JSON
-         //$json = \GuzzleHttp\json_decode($file->getContents(), true);
-         //print_r($json);
+        // If you use JSON
+        // $json = \GuzzleHttp\Utils::jsonDecode($file->getContents(), true);
+        // print_r($json);
     }
 
     $confirmation = $client->confirmExport(['hash' => $exportNotification['urlConfirmation']]);
-    var_dump($confirmation);
+
 
     /*
      * Reference

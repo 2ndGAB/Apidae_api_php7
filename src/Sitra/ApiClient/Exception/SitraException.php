@@ -3,28 +3,15 @@
 namespace Sitra\ApiClient\Exception;
 
 use Exception;
-use GuzzleHttp\Command\Exception\CommandException;
-use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Utils;
 
-/**
- * Class SitraException
- *
- * @package Sitra\ApiClient\Exception
- */
 class SitraException extends \Exception
 {
-    /** @var \Psr\Http\Message\RequestInterface $request */
     protected $request;
-
-    /** @var null|\Psr\Http\Message\ResponseInterface $response */
     protected $response;
 
-    /**
-     * SitraException constructor.
-     *
-     * @param GuzzleException|CommandException $e
-     */
-    public function __construct(GuzzleException $e)
+    public function __construct(RequestException $e)
     {
         $this->request  = $e->getRequest();
         $this->response = $e->getResponse();
@@ -33,7 +20,7 @@ class SitraException extends \Exception
 
         if ($this->response) {
             try {
-                $decodedJson = \GuzzleHttp\json_decode((string) $this->response->getBody(), true);
+                $decodedJson = Utils::jsonDecode((string) $this->response->getBody(), true);
                 if ($decodedJson && isset($decodedJson['errorType'])) {
                     $simpleMessage = $decodedJson['errorType'].' '.$decodedJson['message'];
                 }
@@ -44,8 +31,8 @@ class SitraException extends \Exception
             $code = $this->response->getStatusCode();
         }
 
-        $responseDescription = $this->response ? $this->response->getReasonPhrase() : 'none';
-        $requestDescription = $this->request ? $this->request->getUri() : 'none';
+        $responseDescription = $this->response ? (string) $this->response : 'none';
+        $requestDescription = $this->request ? (string) $this->request : 'none';
 
         $message = sprintf("%s
 

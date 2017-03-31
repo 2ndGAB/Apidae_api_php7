@@ -7,7 +7,7 @@ PHP Client for Rhône Alpes Tourisme [Apidae API](http://blog.apidae-tourisme.co
 - Apidae SSO helpers;
 - Error handling;
 - Handle exports (Zip download and reading);
-- Based on Guzzle 6, Guzzle Command and Guzzle Services.
+- Based on Guzzle 5.
 
 This documentation only handle the PHP implementation, for further questions please refer 
 to [Apidae API Documentation](http://dev.apidae-tourisme.com/).
@@ -41,10 +41,10 @@ However we **strongly** encourage you to [use Composer](https://getcomposer.org/
 
 ### Creating a Client
 
-You need to create a `SitraServiceClient` instance:
+You need to create a `Client` instance:
 
 ```php
-$client = new \Sitra\ApiClient\SitraServiceClient([
+$client = new \Sitra\ApiClient\Client([
     'apiKey'           => 'XXX',
     'projectId'        => 672,
     'baseUrl'          => 'http://api.sitra-tourisme.com/',
@@ -71,7 +71,7 @@ $client = new \Sitra\ApiClient\SitraServiceClient([
 ]);
 
 // You can also only use the mandatory parameters (all options have sensible defaults).
-$client = new \Sitra\ApiClient\SitraServiceClient([
+$client = new \Sitra\ApiClient\Client([
     'apiKey'           => 'XXX',
     'projectId'        => 672,
 ]);
@@ -456,7 +456,7 @@ then forward your user to the Apidae authorization URL. The user can then give y
 to access his data and will be redirected on your application with a code. This code is used to get an Access Token.
 
 ```php
-$client = new \Sitra\ApiClient\SitraServiceClient([
+$client = new \Sitra\ApiClient\Client([
     'ssoRedirectUrl' => 'http://example.com/TODO',
     'ssoClientId'    => 'XXX',
     'ssoSecret'      => 'XXX',

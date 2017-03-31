@@ -4,7 +4,7 @@
 include __DIR__."/../vendor/autoload.php";
 
 // Create the client
-$client = new \Sitra\ApiClient\SitraServiceClient([
+$client = new \Sitra\ApiClient\Client([
     'ssoRedirectUrl' => 'http://example.com/TODO',
     'ssoClientId'    => 'XXX',
     'ssoSecret'      => 'XXX',

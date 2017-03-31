@@ -13,7 +13,7 @@ class Search
             'parameters' => [
                 'query' => [
                     'type'      => 'string',
-                    'location'  => 'formParam',
+                    'location'  => 'postField',
                     'required'  => true,
                     'filters' => [
                         '\Sitra\ApiClient\Description\Search::encodeSearchQuery',
@@ -28,7 +28,7 @@ class Search
             'parameters' => [
                 'query' => [
                     'type'      => 'string',
-                    'location'  => 'formParam',
+                    'location'  => 'postField',
                     'required'  => true,
                     'filters' => [
                         '\Sitra\ApiClient\Description\Search::encodeSearchQuery',
@@ -38,11 +38,7 @@ class Search
         ],
     );
 
-    /**
-     * @param $query
-     * @return string
-     */
-    public static function encodeSearchQuery($query) : string
+    public static function encodeSearchQuery($query)
     {
         if (is_array($query)) {
             return json_encode($query);

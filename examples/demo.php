@@ -4,9 +4,9 @@
 include __DIR__."/../vendor/autoload.php";
 
 // Create the client
+$client = new \Sitra\ApiClient\Client([
     'apiKey'        => 'XXX',
     'projectId'     => 000,
-$client = new \Sitra\ApiClient\SitraServiceClient([
     'baseUrl'       => 'http://api.sitra-tourisme.com/',
 ]);
 

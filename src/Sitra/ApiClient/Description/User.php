@@ -2,8 +2,7 @@
 
 namespace Sitra\ApiClient\Description;
 
-
-use Sitra\ApiClient\Middleware\AuthenticationHandler;
+use Sitra\ApiClient\Subscriber\AuthenticationSubscriber;
 
 class User
 {
@@ -14,7 +13,7 @@ class User
             'uri' => '/api/v002/sso/utilisateur/profil',
             'responseModel' => 'getResponse',
             'data' => [
-                'scope' => AuthenticationHandler::SSO_SCOPE,
+                'scope' => AuthenticationSubscriber::SSO_SCOPE,
             ],
         ],
         // @see http://dev.apidae-tourisme.com/fr/documentation-technique/v2/oauth/services-associes-au-sso/v002ssoutilisateurautorisationobjet-touristiquemodification
@@ -30,7 +29,7 @@ class User
                 ],
             ],
             'data' => [
-                'scope' => AuthenticationHandler::SSO_SCOPE,
+                'scope' => AuthenticationSubscriber::SSO_SCOPE,
             ],
         ],
     );
