@@ -4,7 +4,7 @@ namespace Sitra\ApiClient\Description;
 
 use GuzzleHttp\Query;
 use Sitra\ApiClient\Exception\InvalidMetadataFormatException;
-use Sitra\ApiClient\Subscriber\AuthenticationSubscriber;
+use Sitra\ApiClient\Middleware\AuthenticationHandler;
 
 class Metadata
 {
@@ -39,7 +39,7 @@ class Metadata
                 ],
             ],
             'data' => [
-                'scope' => AuthenticationSubscriber::META_SCOPE,
+                'scope' => AuthenticationHandler::META_SCOPE,
             ],
         ],
         'deleteMetadata' => [
@@ -69,7 +69,7 @@ class Metadata
                 ],
             ],
             'data' => [
-                'scope' => AuthenticationSubscriber::META_SCOPE,
+                'scope' => AuthenticationHandler::META_SCOPE,
             ],
         ],
         'putMetadata' => [
@@ -96,12 +96,16 @@ class Metadata
                 ],
             ],
             'data' => [
-                'scope' => AuthenticationSubscriber::META_SCOPE,
+                'scope' => AuthenticationHandler::META_SCOPE,
             ],
         ],
     );
 
-    public static function validateMetadata($metadata)
+    /**
+     * @param $metadata
+     * @return string
+     */
+    public static function validateMetadata($metadata) : string
     {
         if (empty($metadata)) {
             throw new InvalidMetadataFormatException();
@@ -121,7 +125,6 @@ class Metadata
             }
         }
 
-        // Force "form style" format
-        return new Query($metadata);
+        return \GuzzleHttp\Psr7\build_query($metadata);
     }
 }
